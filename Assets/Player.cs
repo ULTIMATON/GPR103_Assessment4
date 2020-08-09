@@ -27,21 +27,21 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.W) && transform.position.y < myGameManager.levelConstraintTop)
+        if (Input.GetKeyDown(KeyCode.W) && transform.position.y < myGameManager.levelConstraintTop)  
         {
             transform.position = transform.position + new Vector3(0, 1, 0);
         }
-       if(Input.GetKeyDown(KeyCode.S) && transform.position.y > myGameManager.levelConstraintBottom)
+        else if (Input.GetKeyDown(KeyCode.S) && transform.position.y > myGameManager.levelConstraintBottom)  
         {
             transform.position = transform.position + new Vector3(0, -1, 0);
         }
-       if(Input.GetKeyDown(KeyCode.A) && transform.position.x > myGameManager.levelConstraintLeft)
-        {
-            transform.position = transform.position + new Vector3(1, 0, 0);
-        }
-       if(Input.GetKeyDown(KeyCode.D) && transform.position.x < myGameManager.levelConstraintRight)
+        else if (Input.GetKeyDown(KeyCode.A) && transform.position.x > myGameManager.levelConstraintLeft)  
         {
             transform.position = transform.position + new Vector3(-1, 0, 0);
+        }
+        else if (Input.GetKeyDown(KeyCode.D) && transform.position.x < myGameManager.levelConstraintRight) 
+        {
+            transform.position = transform.position + new Vector3(1, 0, 0);
         }
 
     }
