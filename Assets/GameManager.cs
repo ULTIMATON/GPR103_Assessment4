@@ -25,12 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelConstraintTop = 9.5f;
-        levelConstraintBottom = -9.5f;
-        levelConstraintRight = 9.5f;
-        levelConstraintLeft = -9.5f;
-        
-           
+      
     }
 
     // Update is called once per frame
