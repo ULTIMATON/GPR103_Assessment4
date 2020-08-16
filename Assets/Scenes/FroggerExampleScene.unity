@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 117117485}
   m_Layer: 0
   m_Name: Car (8)
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 142902706}
   m_Layer: 0
   m_Name: Car (6)
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: 548670955}
   m_Layer: 0
   m_Name: Car (5)
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -789,7 +789,7 @@ GameObject:
   - component: {fileID: 617785816}
   m_Layer: 0
   m_Name: Car (7)
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -914,7 +914,7 @@ GameObject:
   - component: {fileID: 769461281}
   m_Layer: 0
   m_Name: Car (2)
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 783890230}
   m_Layer: 0
   m_Name: Car (3)
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1510,7 +1510,7 @@ GameObject:
   - component: {fileID: 943749099}
   m_Layer: 0
   m_Name: Car (1)
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2022,10 +2022,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1437505636}
+  - component: {fileID: 1437505635}
   - component: {fileID: 1437505637}
   - component: {fileID: 1437505638}
   - component: {fileID: 1437505639}
-  - component: {fileID: 1437505635}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2112,8 +2112,8 @@ MonoBehaviour:
   playerName: 
   playerTotalLives: 0
   playerLivesRemaining: 0
-  playerIsAlive: 0
-  playerCanMove: 0
+  playerIsAlive: 1
+  playerCanMove: 1
   myGameManager: {fileID: 840484405}
 --- !u!61 &1437505638
 BoxCollider2D:
@@ -2125,7 +2125,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.06}
@@ -2151,7 +2151,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 1437505634}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -2274,7 +2274,7 @@ GameObject:
   - component: {fileID: 1533882093}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2399,7 +2399,7 @@ GameObject:
   - component: {fileID: 1859873885}
   m_Layer: 0
   m_Name: Car (4)
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

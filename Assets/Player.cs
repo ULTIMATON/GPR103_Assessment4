@@ -21,39 +21,46 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (playerIsAlive == true)
-        {
-            _ = playerCanMove == true;
-        }
-        playerTotalLives = 3;
-     
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.W) && transform.position.y < myGameManager.levelConstraintTop)
+        if (playerIsAlive && playerCanMove )
         {
-            transform.position = transform.position + new Vector3(0, 1, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.S) && transform.position.y > myGameManager.levelConstraintBottom)
-        {
-            transform.position = transform.position + new Vector3(0, -1, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.A) && transform.position.x > myGameManager.levelConstraintLeft)
-        {
-            transform.position = transform.position + new Vector3(-1, 0, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.D) && transform.position.x < myGameManager.levelConstraintRight)
-        {
-            transform.position = transform.position + new Vector3(1, 0, 0);
+            if (Input.GetKeyDown(KeyCode.W) && transform.position.y < myGameManager.levelConstraintTop)
+            {
+                transform.position = transform.position + new Vector3(0, 1, 0);
+            }
+            else if (Input.GetKeyDown(KeyCode.S) && transform.position.y > myGameManager.levelConstraintBottom)
+            {
+                transform.position = transform.position + new Vector3(0, -1, 0);
+            }
+            else if (Input.GetKeyDown(KeyCode.A) && transform.position.x > myGameManager.levelConstraintLeft)
+            {
+                transform.position = transform.position + new Vector3(-1, 0, 0);
+            }
+            else if (Input.GetKeyDown(KeyCode.D) && transform.position.x < myGameManager.levelConstraintRight)
+            {
+                transform.position = transform.position + new Vector3(1, 0, 0);
+            }
+
         }
 
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.transform.tag == "Vehicle")
+        {
+            print("hit");
+            playerCanMove = false;
+            playerIsAlive = false;
+        }
+        else
+        {
+            print(collision.transform.tag);
+        }
     }
 
 }
