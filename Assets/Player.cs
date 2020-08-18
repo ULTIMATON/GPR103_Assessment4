@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
 
     public GameObject dyingEffectPrefab;
 
+    public bool onLog = false;
+
     public GameManager myGameManager; //A reference to the GameManager in the scene.
 
     // Start is called before the first frame update
@@ -68,17 +70,20 @@ public class Player : MonoBehaviour
     {
         if(playerIsAlive == true)
         {
-            if (collision.transform.tag == "Vehicle")
+            if (collision.transform.GetComponent<Vehicle>() !=null)
             {
                 print("hit");
                 playerCanMove = false;
                 playerIsAlive = false;
                 myAudioSource.clip = deathSound;
                 myAudioSource.Play();
+                Instantiate(dyingEffectPrefab, transform.position, Quaternion.identity);
+                GetComponent<SpriteRenderer>().enabled = false;
             }
-            else
+            else if (collision.transform.GetComponent<Vehicle2>() != null)
             {
-                print(collision.transform.tag);
+                transform.SetParent(collision.transform);
+                onLog = true;
             }
         }
 
