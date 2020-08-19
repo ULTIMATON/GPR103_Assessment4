@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerIsAlive != true)
+        {
+            myGameManager.uiGameOverScreen.SetActive(true);
+        }
         if (playerIsAlive && playerCanMove )
         {
             if (Input.GetKeyDown(KeyCode.W) && transform.position.y < myGameManager.levelConstraintTop)
@@ -43,12 +47,16 @@ public class Player : MonoBehaviour
                 transform.position = transform.position + new Vector3(0, 1, 0);
                 myAudioSource.clip = leapVerticalSound;
                 myAudioSource.Play();
+                transform.SetParent(null);
+
+                myGameManager.UpdatedScore(10);
             }
             else if (Input.GetKeyDown(KeyCode.S) && transform.position.y > myGameManager.levelConstraintBottom)
             {
                 transform.position = transform.position + new Vector3(0, -1, 0);
                 myAudioSource.clip = leapVerticalSound;
                 myAudioSource.Play();
+                transform.SetParent(null);
             }
             else if (Input.GetKeyDown(KeyCode.A) && transform.position.x > myGameManager.levelConstraintLeft)
             {
@@ -80,10 +88,21 @@ public class Player : MonoBehaviour
                 Instantiate(dyingEffectPrefab, transform.position, Quaternion.identity);
                 GetComponent<SpriteRenderer>().enabled = false;
             }
+            if (playerIsAlive != true)
+            {
+                myGameManager.GameOver(false);
+            }
             else if (collision.transform.GetComponent<Vehicle2>() != null)
             {
                 transform.SetParent(collision.transform);
                 onLog = true;
+            }
+            else if (collision.transform.tag == "EndZone")
+            {
+                myGameManager.UpdatedScore(150);
+                myGameManager.GameOver(true);
+                print("You Won!");
+                playerCanMove = false;
             }
         }
 

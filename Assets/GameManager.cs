@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This script is to be attached to a GameObject called GameManager in the scene. It is to be used to manager the settings and overarching gameplay loop.
@@ -22,6 +24,11 @@ public class GameManager : MonoBehaviour
     public float totalGameTime; //The maximum amount of time or the total time avilable to the player.
     public float gameTimeRemaining; //The current elapsed time
 
+    [Header ("UI Window")]
+    public GameObject uiGameOverScreen;
+    public TMP_Text uiGameOverMessage;
+    public TMP_Text uiCurrentScore;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,5 +39,32 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+   
+    public void RestartingGame()
+    {
+        print("Restarting scene");
+        SceneManager.LoadScene(0);
+    }
+
+    public void GameOver(bool isVictory)
+    {
+        if (isVictory == true)
+        {
+            uiGameOverMessage.text = "You Have Won!";
+        }
+        else
+        {
+            uiGameOverMessage.text = "You Have Lost!";
+        }
+             
+        uiGameOverScreen.SetActive(true);
+    }
+
+    public void UpdatedScore(int amount)
+    {
+        currentScore += amount;
+        uiCurrentScore.text = "Score: " + currentScore.ToString();
     }
 }
