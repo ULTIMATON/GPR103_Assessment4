@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public GameObject dyingEffectPrefab;
 
     public bool onLog = false;
+    public bool inWater = false;
+
 
     public GameManager myGameManager; //A reference to the GameManager in the scene.
 
@@ -47,8 +49,7 @@ public class Player : MonoBehaviour
                 transform.position = transform.position + new Vector3(0, 1, 0);
                 myAudioSource.clip = leapVerticalSound;
                 myAudioSource.Play();
-                transform.SetParent(null);
-
+                
                 myGameManager.UpdatedScore(10);
             }
             else if (Input.GetKeyDown(KeyCode.S) && transform.position.y > myGameManager.levelConstraintBottom)
@@ -56,7 +57,7 @@ public class Player : MonoBehaviour
                 transform.position = transform.position + new Vector3(0, -1, 0);
                 myAudioSource.clip = leapVerticalSound;
                 myAudioSource.Play();
-                transform.SetParent(null);
+                
             }
             else if (Input.GetKeyDown(KeyCode.A) && transform.position.x > myGameManager.levelConstraintLeft)
             {
@@ -104,8 +105,50 @@ public class Player : MonoBehaviour
                 print("You Won!");
                 playerCanMove = false;
             }
+            else if (collision.transform.tag == "Water")
+            {
+                inWater = true;
+            }
         }
 
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (playerIsAlive == true)
+        {
+            if (collision.transform.GetComponent<Vehicle2>() != null)
+            {
+                onLog = false;
+                transform.SetParent(null);
+            }
+            else if (collision.transform.tag == "Water")
+            {
+                inWater = false;
+            }
+
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if(playerIsAlive)
+        {
+            if (inWater == true && onLog == false)
+            {
+                playerIsAlive = false;
+                playerCanMove = false;
+                myAudioSource.clip = deathSound;
+                myAudioSource.Play();
+
+            }
+        }
+        if (playerIsAlive == false)
+        {
+            myGameManager.GameOver(false);
+        }
+    }
+
+
 
 }

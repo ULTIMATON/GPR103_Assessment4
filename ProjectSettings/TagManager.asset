@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Vehicle
   - EndZone
+  - Platform
+  - Water
   layers:
   - Default
   - TransparentFX
