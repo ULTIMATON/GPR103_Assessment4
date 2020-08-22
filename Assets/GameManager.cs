@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 /// <summary>
 /// This script is to be attached to a GameObject called GameManager in the scene. It is to be used to manager the settings and overarching gameplay loop.
 /// </summary>
@@ -29,16 +30,17 @@ public class GameManager : MonoBehaviour
     public TMP_Text uiGameOverMessage;
     public TMP_Text uiCurrentScore;
 
+
     // Start is called before the first frame update
     void Start()
     {
-      
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+            
     }
 
    
@@ -67,4 +69,5 @@ public class GameManager : MonoBehaviour
         currentScore += amount;
         uiCurrentScore.text = "Score: " + currentScore.ToString();
     }
+
 }
